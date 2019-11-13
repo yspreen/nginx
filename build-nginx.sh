@@ -54,3 +54,8 @@ apk del .build-deps
 mkdir /var/log/nginx
 ln -sf /dev/stdout /var/log/nginx/access.log
 ln -sf /dev/stderr /var/log/nginx/error.log
+
+addgroup -S nginx
+adduser -S -G nginx -H -s /bin/false -D nginx
+addgroup -S www
+adduser -S -G www -H -s /bin/false -D www
