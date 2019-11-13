@@ -52,6 +52,7 @@ rm -rf /build
 apk del .build-deps
 
 # forward request and error logs to docker log collector
+mkdir /var/log/nginx
 ln -sf /dev/stdout /etc/nginx/logs/access.log
 ln -sf /dev/stderr /etc/nginx/logs/error.log
 
