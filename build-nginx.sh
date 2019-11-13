@@ -43,6 +43,7 @@ cd nginx-$STABLE
 --add-dynamic-module=/build/mod_zip
 make
 make install
+ln -sf /usr/local/nginx/nginx /bin/nginx
 
 cd /
 rm -rf /build
