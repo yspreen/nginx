@@ -40,7 +40,7 @@ cd nginx-$STABLE
 --with-stream \
 --with-mail=dynamic \
 --with-http_addition_module \
---add-dynamic-module=/build/mod_zip
+--add-module=/build/mod_zip
 make
 make install
 ln -sf /etc/nginx/nginx /bin/nginx
