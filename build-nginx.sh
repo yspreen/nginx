@@ -31,6 +31,7 @@ wget https://nginx.org/download/nginx-$STABLE.tar.gz
 tar zxf nginx-$STABLE.tar.gz
 cd nginx-$STABLE
 ./configure \
+--prefix=/etc/nginx \
 --sbin-path=/etc/nginx/nginx \
 --conf-path=/etc/nginx/nginx.conf \
 --pid-path=/etc/nginx/nginx.pid \
@@ -51,9 +52,8 @@ rm -rf /build
 apk del .build-deps
 
 # forward request and error logs to docker log collector
-mkdir /var/log/nginx
-ln -sf /dev/stdout /var/log/nginx/access.log
-ln -sf /dev/stderr /var/log/nginx/error.log
+ln -sf /dev/stdout /etc/nginx/logs/access.log
+ln -sf /dev/stderr /etc/nginx/logs/error.log
 
 addgroup -S nginx
 adduser -S -G nginx -H -s /bin/false -D nginx
