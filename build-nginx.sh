@@ -31,9 +31,9 @@ wget https://nginx.org/download/nginx-$STABLE.tar.gz
 tar zxf nginx-$STABLE.tar.gz
 cd nginx-$STABLE
 ./configure \
---sbin-path=/usr/local/nginx/nginx \
---conf-path=/usr/local/nginx/nginx.conf \
---pid-path=/usr/local/nginx/nginx.pid \
+--sbin-path=/etc/nginx/nginx \
+--conf-path=/etc/nginx/nginx.conf \
+--pid-path=/etc/nginx/nginx.pid \
 --with-pcre=../pcre-8.43 \
 --with-zlib=../zlib-1.2.11 \
 --with-http_ssl_module \
@@ -43,7 +43,7 @@ cd nginx-$STABLE
 --add-dynamic-module=/build/mod_zip
 make
 make install
-ln -sf /usr/local/nginx/nginx /bin/nginx
+ln -sf /etc/nginx/nginx /bin/nginx
 
 cd /
 rm -rf /build
