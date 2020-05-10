@@ -1,6 +1,6 @@
-FROM alpine:3.10
+FROM alpine:3.11
 
-ARG STABLE=1.16.1
+ARG STABLE=1.18.0
 
 ADD build-nginx.sh /build.sh
 RUN /build.sh; rm /build.sh
