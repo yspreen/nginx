@@ -1,28 +1,13 @@
 apk update
 apk upgrade
 apk add --no-cache --virtual .run-deps \
-openssl
+openssl pcre zlib
 apk add --no-cache --virtual .build-deps \
-alpine-sdk \
+alpine-sdk pcre-dev zlib-dev \
 git \
 openssl-dev
 
 mkdir /build
-cd /build
-wget https://ftp.pcre.org/pub/pcre/pcre-8.43.tar.gz
-tar -zxf pcre-8.43.tar.gz
-cd pcre-8.43
-./configure
-make
-make install
-cd /build
-
-wget http://zlib.net/zlib-1.2.11.tar.gz
-tar -zxf zlib-1.2.11.tar.gz
-cd zlib-1.2.11
-./configure
-make
-make install
 cd /build
 
 git clone https://github.com/evanmiller/mod_zip.git
@@ -35,8 +20,7 @@ cd nginx-$STABLE
 --sbin-path=/etc/nginx/nginx \
 --conf-path=/etc/nginx/nginx.conf \
 --pid-path=/etc/nginx/nginx.pid \
---with-pcre=../pcre-8.43 \
---with-zlib=../zlib-1.2.11 \
+--with-pcre \
 --with-http_ssl_module \
 --with-stream \
 --with-mail=dynamic \
